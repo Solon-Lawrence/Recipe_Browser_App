@@ -114,10 +114,27 @@
   }
 
   async function fetchSpoonacularNutrition(meal) {
-    if (!SPOONACULAR_API_KEY) return null;
+    const params = new URLSearchParams();
+    params.set('query', meal.strMeal || '');
+    params.set('addRecipeNutrition', '1');
+    params.set('number', '1');
+
     try {
-      const url = `${SPOONACULAR_API_BASE}/complexSearch?query=${encodeURIComponent(meal.strMeal)}&addRecipeNutrition=true&number=1&apiKey=${encodeURIComponent(SPOONACULAR_API_KEY)}`;
-      const data = await fetchJSON(url);
+      let data = null;
+      if (SPOONACULAR_API_KEY) {
+        const url = `${SPOONACULAR_API_BASE}/complexSearch?${params.toString()}&apiKey=${encodeURIComponent(SPOONACULAR_API_KEY)}`;
+        data = await fetchJSON(url);
+      } else {
+        // try server-side proxy
+        try {
+          const url = `/Recipe_Browser_App/spoonacular_proxy.php?mode=search&${params.toString()}`;
+          data = await fetchJSON(url);
+        } catch (proxyErr) {
+          console.warn('Spoonacular proxy lookup failed', proxyErr);
+          return null;
+        }
+      }
+
       const hit = data && Array.isArray(data.results) ? data.results[0] : null;
       const nutrients = hit && hit.nutrition && Array.isArray(hit.nutrition.nutrients) ? hit.nutrition.nutrients : [];
       const pick = (name) => {
@@ -480,14 +497,25 @@
 
   // Spoonacular search wrapper: returns array of meal-like objects compatible with renderRecipeCard
   async function spoonacularSearch(q = '', diet = '', cuisine = '') {
-    if (!SPOONACULAR_API_KEY) return null;
     try {
-      let url = `${SPOONACULAR_API_BASE}/complexSearch?number=40&addRecipeInformation=true&apiKey=${encodeURIComponent(SPOONACULAR_API_KEY)}`;
-      if (q) url += `&query=${encodeURIComponent(q)}`;
-      if (diet && diet !== 'All Diets') url += `&diet=${encodeURIComponent(diet.toLowerCase())}`;
-      if (cuisine && cuisine !== 'All Cuisines') url += `&cuisine=${encodeURIComponent(cuisine)}`;
-      const data = await fetchJSON(url);
-      const results = data && Array.isArray(data.results) ? data.results.map(mapSpoonacularToMeal) : [];
+      // If a client-side key is present, call Spoonacular directly; otherwise use server proxy
+      if (SPOONACULAR_API_KEY) {
+        let url = `${SPOONACULAR_API_BASE}/complexSearch?number=40&addRecipeInformation=true&apiKey=${encodeURIComponent(SPOONACULAR_API_KEY)}`;
+        if (q) url += `&query=${encodeURIComponent(q)}`;
+        if (diet && diet !== 'All Diets') url += `&diet=${encodeURIComponent(diet.toLowerCase())}`;
+        if (cuisine && cuisine !== 'All Cuisines') url += `&cuisine=${encodeURIComponent(cuisine)}`;
+        const data = await fetchJSON(url);
+        const results = data && Array.isArray(data.results) ? data.results.map(mapSpoonacularToMeal) : [];
+        return results;
+      }
+
+      // Try server-side proxy
+      let proxyUrl = `/Recipe_Browser_App/spoonacular_proxy.php?mode=search&number=40&addRecipeNutrition=0`;
+      if (q) proxyUrl += `&query=${encodeURIComponent(q)}`;
+      if (diet && diet !== 'All Diets') proxyUrl += `&diet=${encodeURIComponent(diet.toLowerCase())}`;
+      if (cuisine && cuisine !== 'All Cuisines') proxyUrl += `&cuisine=${encodeURIComponent(cuisine)}`;
+      const proxyData = await fetchJSON(proxyUrl);
+      const results = proxyData && Array.isArray(proxyData.results) ? proxyData.results.map(mapSpoonacularToMeal) : [];
       return results;
     } catch (err) {
       console.warn('Spoonacular search failed', err);

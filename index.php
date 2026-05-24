@@ -238,14 +238,102 @@
     <a href="#" class="section-link section-link--amber-lt">All Cuisines</a>
   </div>
   <div class="cuisine-strip">
-    <div class="cuisine-item"><div class="cuisine-thumb">🇵🇭</div><div class="cuisine-overlay"><div class="cuisine-name">Filipino</div><div class="cuisine-count">148 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇯🇵</div><div class="cuisine-overlay"><div class="cuisine-name">Japanese</div><div class="cuisine-count">230 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇮🇹</div><div class="cuisine-overlay"><div class="cuisine-name">Italian</div><div class="cuisine-count">312 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇲🇽</div><div class="cuisine-overlay"><div class="cuisine-name">Mexican</div><div class="cuisine-count">176 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇮🇳</div><div class="cuisine-overlay"><div class="cuisine-name">Indian</div><div class="cuisine-count">285 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇰🇷</div><div class="cuisine-overlay"><div class="cuisine-name">Korean</div><div class="cuisine-count">163 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇫🇷</div><div class="cuisine-overlay"><div class="cuisine-name">French</div><div class="cuisine-count">204 recipes</div></div></div>
-    <div class="cuisine-item"><div class="cuisine-thumb">🇨🇳</div><div class="cuisine-overlay"><div class="cuisine-name">Chinese</div><div class="cuisine-count">267 recipes</div></div></div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/ph.svg" alt="Philippines" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/ph.svg'">
+          </picture>
+          <div class="cuisine-name">Filipino</div>
+        </div>
+        <div class="cuisine-count">148 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/jp.svg" alt="Japan" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/jp.svg'">
+          </picture>
+          <div class="cuisine-name">Japanese</div>
+        </div>
+        <div class="cuisine-count">230 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/it.svg" alt="Italy" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/it.svg'">
+          </picture>
+          <div class="cuisine-name">Italian</div>
+        </div>
+        <div class="cuisine-count">312 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/mx.svg" alt="Mexico" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/mx.svg'">
+          </picture>
+          <div class="cuisine-name">Mexican</div>
+        </div>
+        <div class="cuisine-count">176 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/in.svg" alt="India" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/in.svg'">
+          </picture>
+          <div class="cuisine-name">Indian</div>
+        </div>
+        <div class="cuisine-count">285 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/kr.svg" alt="South Korea" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/kr.svg'">
+          </picture>
+          <div class="cuisine-name">Korean</div>
+        </div>
+        <div class="cuisine-count">163 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/fr.svg" alt="France" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/fr.svg'">
+          </picture>
+          <div class="cuisine-name">French</div>
+        </div>
+        <div class="cuisine-count">204 recipes</div>
+      </div>
+    </div>
+    <div class="cuisine-item">
+      <div class="cuisine-thumb"></div>
+      <div class="cuisine-overlay">
+        <div class="cuisine-overlay-top">
+          <picture class="cuisine-flag" aria-hidden="true">
+            <img src="/Recipe_Browser_App/assets/img/flags/cn.svg" alt="China" width="54" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/cn.svg'">
+          </picture>
+          <div class="cuisine-name">Chinese</div>
+        </div>
+        <div class="cuisine-count">267 recipes</div>
+      </div>
+    </div>
   </div>
 </section>
 
